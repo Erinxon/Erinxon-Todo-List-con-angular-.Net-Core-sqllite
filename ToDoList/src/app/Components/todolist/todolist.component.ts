@@ -20,6 +20,8 @@ export class TodolistComponent implements OnInit {
 
   isEditing: boolean = false;
 
+  p: number = 1;
+
   constructor(private _todoListService: TodoListService) {
 
   }

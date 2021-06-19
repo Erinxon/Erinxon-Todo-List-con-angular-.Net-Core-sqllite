@@ -30,7 +30,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let task of listTask;">
+              <tr *ngIf="listTask.length === 0">
+                <th colspan="5" class="text-center">
+                  <span style="font-size: 20px;">No hay tareas registradas</span>
+                </th>
+              </tr>
+              <tr *ngFor="let task of listTask | paginate: { itemsPerPage: 5, currentPage: p }">
                 <th scope="row">{{task.id}}</th>
                 <td>
                   {{task.nameTask}}
@@ -60,7 +65,13 @@
 
             </tbody>
           </table>
+          <pagination-controls 
+          (pageChange)="p = $event"
+          previousLabel="Anterior"
+          nextLabel="Siguiente"
+          ></pagination-controls>
         </div>
+
       </div>
     </div>
   </div>
